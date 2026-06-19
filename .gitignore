@@ -9,8 +9,4 @@ logs/
 *.jpg
 *.jpeg
 *.wav
-*.ogg
-*.mp3
 *.ttf
-*.glb
-*.blend

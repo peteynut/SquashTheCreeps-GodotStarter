@@ -75,10 +75,4 @@ Players control characters on a 3D arena, jumping on enemy mobs (called "creeps"
 
 ## Licensing Note
 
-This game was created following the official Godot "Squash the Creeps" tutorial. Before uploading to a public repository, please verify you are permitted to do so under Godot's licensing terms for tutorial-derived projects. The fonts use the SIL Open Font License. The Rider plugin uses the MIT license.
-
-## How to Run
-
-1. Open the project in Godot 4.x
-2. Press F5 to run, or use the Godot editor to test
-3. To test multiplayer, run the project on two machines and use Host/Join on the main menu
+This game was created following the official Godot "Squash the Creeps" tutorial. I did not create the assets or the idea behind it.
