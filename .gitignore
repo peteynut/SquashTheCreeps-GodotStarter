@@ -1,0 +1,16 @@
+.import
+logs/
+.godot/
+.idea/
+*.user
+*.csproj
+*.sln
+*.png
+*.jpg
+*.jpeg
+*.wav
+*.ogg
+*.mp3
+*.ttf
+*.glb
+*.blend

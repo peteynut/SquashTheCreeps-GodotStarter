@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://2wap0283yk0r"]
+
+[ext_resource type="Script" uid="uid://cc8n3086pvl18" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ceuu150fmggvr" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://defdm2qdva75q" path="res://mob.tscn" id="2_h2yge"]
+[ext_resource type="AudioStream" uid="uid://goo8kcwqf5ii" path="res://audio/stable_audio_3_00004.mp3" id="4_1bvp3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(0, 0.5201675, 0.2248777, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+material = SubResource("StandardMaterial3D_1bvp3")
+size = Vector3(60, 2, 60)
+
+[sub_resource type="Curve3D" id="Curve3D_lquwl"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -13.803138, 0, 17.215778, 0, 0, 0, 0, 0, 0, 17.218811, 0, 17.29917, 0, 0, 0, 0, 0, 0, 17.135437, 0, -15.9743805, 0, 0, 0, 0, 0, 0, -13.803138, 0, -15.9743805),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Main" type="Node" unique_id=1061080714]
+script = ExtResource("1_0xm2m")
+mob_scene = ExtResource("2_h2yge")
+player_scene = ExtResource("1_ig7tw")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=470252101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1585816832]
+shape = SubResource("BoxShape3D_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1420070872]
+mesh = SubResource("BoxMesh_ig7tw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=136482150]
+transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660253, 0, -0.8660253, -0.50000006, 0, 16, 0)
+shadow_enabled = true
+
+[node name="Players" type="Node" parent="." unique_id=200000001]
+
+[node name="Mobs" type="Node" parent="." unique_id=200000002]
+
+[node name="CameraPivot" type="Marker3D" parent="." unique_id=1933787041]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=664398984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19)
+projection = 1
+size = 19.0
+far = 100.0
+
+[node name="SpawnPath" type="Path3D" parent="." unique_id=1908389583]
+curve = SubResource("Curve3D_lquwl")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath" unique_id=150938123]
+transform = Transform3D(-0.0026882072, 0, -0.9999953, 0, 1, 0, 0.9999953, 0, -0.0026882072, -13.803138, 0, 17.215778)
+
+[node name="Timer" type="Timer" parent="." unique_id=117906193]
+wait_time = 0.5
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1531424085]
+process_mode = 3
+stream = ExtResource("4_1bvp3")
+volume_db = -6.843
+autoplay = true
+parameters/looping = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
