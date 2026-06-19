@@ -10,3 +10,5 @@ logs/
 *.jpeg
 *.wav
 *.ttf
+.claude
+addons/rider-plugin
